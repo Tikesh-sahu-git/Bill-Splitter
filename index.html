@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bill Splitter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Indian Bill Splitter</h1>
+            <p>Easily split restaurant bills with friends and family</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="input-group">
+                <label for="billAmount">Total Bill Amount (₹)</label>
+                <input type="number" id="billAmount" placeholder="Enter amount in rupees" min="0" step="any">
+                <p class="info-text">Enter the total bill amount before tax</p>
+            </div>
+            
+            <div class="input-group">
+                <label for="tax">Tax/GST (%)</label>
+                <input type="number" id="tax" placeholder="Enter percentage" min="0" step="any" value="18">
+                <p class="info-text">Typically 5%, 12%, or 18% in India</p>
+            </div>
+            
+            <div class="input-group">
+                <label for="tip">Tip Amount (Optional)</label>
+                <input type="number" id="tip" placeholder="Enter amount in rupees" min="0" step="any">
+                <p class="info-text">Enter the tip amount if you plan to leave one</p>
+            </div>
+            
+            <div class="input-group">
+                <label for="people">Number of People</label>
+                <input type="number" id="people" placeholder="How many people?" min="1" value="2">
+            </div>
+            
+            <div class="input-group">
+                <label>Split Method</label>
+                <div class="split-options">
+                    <div class="split-option active" id="equalSplit">Equal Split</div>
+                    <div class="split-option" id="customSplit">Custom Split</div>
+                </div>
+            </div>
+            
+            <div class="input-group" id="customSplitContainer" style="display: none;">
+                <label for="customShares">Enter shares (comma separated)</label>
+                <input type="text" id="customShares" placeholder="e.g., 1, 1.5, 2">
+                <p class="info-text">Higher numbers pay more. For example: 1, 1.5, 2 means third person pays double the first</p>
+            </div>
+            
+            <div class="loader" id="loader">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <p>Calculating your split...</p>
+            </div>
+            
+            <button id="calculateBtn">
+                <i class="fas fa-calculator"></i> Calculate Split
+            </button>
+            
+            <div class="success-checkmark" id="successCheckmark">
+                <i class="fas fa-check-circle"></i>
+                <p>Calculation complete!</p>
+            </div>
+            
+            <div class="results" id="results">
+                <h3>Bill Split Results</h3>
+                <div class="result-item">
+                    <span>Total Bill:</span>
+                    <span><span class="currency-sign">₹</span> <span id="totalBill">0.00</span></span>
+                </div>
+                <div class="result-item">
+                    <span>Tax Amount:</span>
+                    <span><span class="currency-sign">₹</span> <span id="taxAmount">0.00</span></span>
+                </div>
+                <div class="result-item">
+                    <span>Tip Amount:</span>
+                    <span><span class="currency-sign">₹</span> <span id="tipAmount">0.00</span></span>
+                </div>
+                <div class="result-item">
+                    <span>Each Person Pays:</span>
+                    <span><span class="currency-sign">₹</span> <span id="perPerson">0.00</span></span>
+                </div>
+                <div class="result-item">
+                    <span>Split Between:</span>
+                    <span id="peopleCount">2 <i class="fas fa-user person-icon"></i><i class="fas fa-user person-icon"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- In a real project, this would be in a separate script.js file -->
+    <script src="script.js"></script>
+</body>
+</html>
